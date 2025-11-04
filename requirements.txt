@@ -1,0 +1,9 @@
+mlflow~=2.22.0
+mlflow-skinny~=2.22.0
+scikit-learn
+pandas
+numpy
+joblib
+pytest
+azure-storage-blob
+azure-identity

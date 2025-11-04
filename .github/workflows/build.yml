@@ -1,0 +1,53 @@
+name: Build Model
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    env:
+        EXPERIMENT_NAME: ${{ vars.EXPERIMENT_NAME }}
+        MODEL_NAME: ${{ vars.MODEL_NAME }}
+        MODEL_ALIAS: ${{ vars.MODEL_ALIAS || 'champion' }}
+        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_URL }}
+        AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate RUN_NAME
+        run: echo "RUN_NAME=run-$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install scikit-learn pandas joblib mlflow azure-storage-blob azure-identity pytest mlflow-skinny numpy
+      
+      - name: Download Adult dataset
+        run: |
+          curl -o data/raw/adult.data https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data
+          curl -o data/raw/adult.test https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test
+          
+      - name: Train and save model
+        run: |
+          python src/main.py
+      
+      - name: Save run ID to env
+        run: echo "RUN_ID=$(cat run_id.txt)" >> $GITHUB_ENV
+         
+      - name: Run model tests
+        run: python model_tests/test_model.py
+
+      - name: Register model in MLflow
+        run: python scripts/register_model.py
