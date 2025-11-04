@@ -11,11 +11,10 @@ permissions:
 jobs:
   build:
     env:
-        EXPERIMENT_NAME: ${{ vars.EXPERIMENT_NAME }}
-        MODEL_NAME: ${{ vars.MODEL_NAME }}
-        MODEL_ALIAS: ${{ vars.MODEL_ALIAS || 'champion' }}
-        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_URL }}
-        AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
+        MLFLOW_URL: ${{vars.MLFLOW_URI}}
+        EXPERIMENT_NAME: ${{vars.EXPERIMENT_NAME}}
+        MODEL_NAME: ${{vars.MODEL_NAME}}
     runs-on: ubuntu-latest
     steps:      
       - name: Checkout code
