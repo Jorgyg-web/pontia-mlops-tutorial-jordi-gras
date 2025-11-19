@@ -12,7 +12,7 @@ jobs:
   build:
     env:
         AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
-        MLFLOW_URL: ${{vars.MLFLOW_URI}}
+        MLFLOW_URI: ${{vars.MLFLOW_URI}}
         EXPERIMENT_NAME: ${{vars.EXPERIMENT_NAME}}
         MODEL_NAME: ${{vars.MODEL_NAME}}
     runs-on: ubuntu-latest
