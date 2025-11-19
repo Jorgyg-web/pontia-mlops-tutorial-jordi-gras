@@ -38,7 +38,7 @@ MODEL_DIR.mkdir(exist_ok=True)
 
 def main():
     # MLflow config
-    mlflow.set_tracking_uri(os.getenv("MLFLOW_URL", "no_url_found"))
+    mlflow.set_tracking_uri(os.getenv("MLFLOW_URI", "no_url_found"))
     mlflow.set_experiment(os.getenv("EXPERIMENT_NAME", "no_experiment_name_found"))
     script_start = time.time()
     logger.info(f"System info: {platform.platform()}")
