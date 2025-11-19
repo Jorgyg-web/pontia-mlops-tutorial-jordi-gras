@@ -3,16 +3,14 @@ from mlflow.tracking import MlflowClient
 import os
 from datetime import datetime
 from pathlib import Path
-
 # Set the tracking URI if it's not the default
-mlflow.set_tracking_uri(os.getenv("MLFLOW_URI", "no_mlflow_found"))
+mlflow.set_tracking_uri(os.getenv("MLFLOW_URL", "no_url_found"))
 
 client = MlflowClient()
 
 # Replace with your actual run ID and model artifact path
 #with open("run_id.txt", "r") as f:
-    #run_id = f.read().strip()
-
+#    run_id = f.read().strip()
 run_id = os.getenv('RUN_ID', 'run_id not found')
 model_name =  os.getenv("MODEL_NAME", "no_name")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
