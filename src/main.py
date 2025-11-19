@@ -20,7 +20,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-logger=logging.getLogger("adult-income-merlin")
+logger=logging.getLogger("adult-income-jordi-g")
 
 run_name = os.getenv("RUN_NAME", "no_name_found")
 
@@ -62,3 +62,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
