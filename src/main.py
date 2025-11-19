@@ -11,11 +11,6 @@ from data_loader import load_data, preprocess_data
 from evaluate import evaluate
 from model import train_model
 
-print("==== VARIABLES DE ENTORNO ====")
-for key in ["MLFLOW_URL", "MLFLOW_URI", "EXPERIMENT_NAME", "AZURE_STORAGE_CONNECTION_STRING"]:
-    print(f"{key} =", os.getenv(key))
-print("==============================")
-
 # Configurar logging (consola + archivo)
 logging.basicConfig(
     level=logging.INFO,
