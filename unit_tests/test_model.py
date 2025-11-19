@@ -1,5 +1,5 @@
 import numpy as np
-import pytest
+
 from src.model import train_model
 from sklearn.ensemble import RandomForestClassifier
 
