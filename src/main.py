@@ -25,7 +25,7 @@ logger=logging.getLogger("adult-income")
 run_name = f"run-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
 
 # MLflow config
-EXPERIMENT_NAME = os.getenv("EXPERIMENT_NAME", "no_experiment_name_found")
+EXPERIMENT_NAME = os.getenv("EXPERIMENT_NAME", "no_experiment_name_found") 
 run_name = os.getenv("RUN_NAME", "no_experiment_name_found")
 
 
