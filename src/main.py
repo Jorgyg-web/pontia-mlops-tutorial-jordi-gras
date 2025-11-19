@@ -19,7 +19,7 @@ logging.basicConfig(
         logging.FileHandler("training.log"),
         logging.StreamHandler()
     ]
-)
+) 
 logger=logging.getLogger("adult-income")
 
 run_name = f"run-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
