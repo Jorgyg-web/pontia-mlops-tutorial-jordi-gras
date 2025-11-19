@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 # Set the tracking URI if it's not the default
-mlflow.set_tracking_uri(os.getenv("MLFLOW_URI", "no_url_found"))
+mlflow.set_tracking_uri(os.getenv("MLFLOW_URL", "no_url_found"))
 
 client = MlflowClient()
 
