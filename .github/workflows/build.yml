@@ -35,8 +35,8 @@ jobs:
       
       - name: Download Adult dataset
         run: |
-          curl -o data/raw/adult.data https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data
-          curl -o data/raw/adult.test https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test
+          curl -o data/raw/adult.data http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data
+          curl -o data/raw/adult.test http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test
           
       - name: Train and save model
         run: |
