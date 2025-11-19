@@ -9,8 +9,9 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /code
 
 # Install dependencies
+COPY requirements.txt /code/
 RUN pip install --upgrade pip
-RUN pip install scikit-learn pandas joblib mlflow azure-storage-blob azure-identity pytest mlflow-skinny numpy
+RUN pip install -r requirements.txt
 
 # Copy project
 COPY ./app /code/app

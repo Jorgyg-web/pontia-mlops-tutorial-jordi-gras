@@ -23,8 +23,8 @@ jobs:
 
       - name: Build Docker image
         run: |
+          cp requirements.txt ./deployment/requirements.txt
           docker build -t ${{ secrets.ACR_NAME }}/${{ vars.IMAGE_NAME }} ./deployment
-
       - name: Push Docker image to ACR
         run: |
           docker push ${{ secrets.ACR_NAME }}/${{ vars.IMAGE_NAME }}
